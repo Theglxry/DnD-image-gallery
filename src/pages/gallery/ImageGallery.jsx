@@ -9,10 +9,15 @@ import SearchImages from "../../components/gallery/Search";
 
 
 function ImageGallery() {
+  const handleSearch = (newImages) => {
+    setImages(newImages);
+  };
+
   return (
     <div className="flex-col h-screen">
       <div>
-        <SearchImages />
+      <SearchImages onSearch={handleSearch} />
+
       </div>
 
       <div className="w-full pt-24  ">
@@ -30,6 +35,7 @@ export default ImageGallery;
 
 /*
 import React, { useState } from 'react';
+
 import SearchBar from './SearchBar'; // Adjust the path as needed
 
 function App() {
