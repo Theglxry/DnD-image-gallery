@@ -1,20 +1,19 @@
 import React from "react";
 import backgroundImage from "../../assets/images/black2.jpg";
-import axios from "axios";
+import { useState } from "react";
 
-function SearchImages() {
-  const [query, setQuery] = useState("");
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get(
-        `https://api.unsplash.com/photos/random?count=10&query=${query}&client_id=YOUR_ACCESS_KEY`
-      );
-      onSearch(response.data);
-    } catch (error) {
-      console.error("Error fetching images from Unsplash:", error);
-    }
-  };
+
+function SearchBar() {
+const [query, setQuery] = useState("");
+
+
+const handleSearch = () => {
+  if (query.trim() !== "") {
+    onSearch(query);  
+  }
+};
+
 
   const mainStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -22,6 +21,9 @@ function SearchImages() {
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
   };
+
+
+
 
   return (
     <div style={mainStyle} className="w-full">
@@ -33,15 +35,13 @@ function SearchImages() {
           >
             <input
               type="text"
-              placeholder="Search for images"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              placeholder="enter your search here"
               className="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none"
+              value={query}
+              onChange={(e) =>setQuery(e.target.value)}
             />
-
-            <button
-              className="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
-              onClick={handleSearch}
+            <button className="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
+            onClick={handleSearch}
             >
               Search
             </button>
@@ -52,4 +52,4 @@ function SearchImages() {
   );
 }
 
-export default SearchImages;
+export default SearchBar;

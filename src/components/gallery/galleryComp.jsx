@@ -23,6 +23,9 @@ function galleryComp() {
       });
   }, []);
 
+
+  
+
   // Rearrange images when a drag-and-drop operation occurs
   const onDragEnd = (result) => {
     if (!result.destination) {
