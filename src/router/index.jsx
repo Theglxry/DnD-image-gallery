@@ -5,7 +5,6 @@ import Homepage from '../pages/home';
 import Gallery from '../pages/gallery/ImageGallery';
 import ErrorPage from '../pages/ErrorPage';
 
-import Mock from '../mock/mock'
 
 
 
@@ -17,7 +16,6 @@ function AppRouter() {
           <Route path="/" element={<Homepage />} />
           {/* link to gallery */}
           <Route path='/gallery' element={<Gallery />} />  
-          <Route path='/mock' element={<Mock />} />  
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>
