@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function SignOut() {
   const history = useNavigate();
 
-
   const handleClick = () => {
     signOut(database).then((val) => {
       console.log(val, "val");
@@ -16,15 +15,9 @@ function SignOut() {
   };
 
 
-
-
-
   return (
     <div> 
-    
     <button className="border-2 p-2 bg-slate-300" onClick={handleClick}>SignOut</button>
-    
-    
     </div>
   )
 }

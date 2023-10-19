@@ -2,18 +2,24 @@ import React from "react";
 import backgroundImage from "../../assets/images/black2.jpg";
 import { useState } from "react";
 
+function SearchBar({ onSearch }) {
+  const [query, setSearchQuery] = useState("");
+
+  const handleInputChange = (event) => {
+    const query =event.target.value
+    setSearchQuery(query)
+    onSearch(query)
+
+  };
+
+  const handleSearchClick = () => {
+    if (query.trim() !== "") {
+      onSearch(query);
+    }
+  };
 
 
-function SearchBar() {
-const [query, setQuery] = useState("");
-
-
-const handleSearch = () => {
-  if (query.trim() !== "") {
-    onSearch(query);  
-  }
-};
-
+  
 
   const mainStyle = {
     backgroundImage: `url(${backgroundImage})`,
@@ -25,6 +31,7 @@ const handleSearch = () => {
 
 
 
+  
   return (
     <div style={mainStyle} className="w-full">
       <div className="relative p-12 w-full sm:max-w-2xl sm:mx-auto">
@@ -35,13 +42,15 @@ const handleSearch = () => {
           >
             <input
               type="text"
-              placeholder="enter your search here"
+              placeholder="search luxury cars "
               className="rounded-full flex-1 px-6 py-4 text-gray-700 focus:outline-none"
               value={query}
-              onChange={(e) =>setQuery(e.target.value)}
+              onChange={handleInputChange}
             />
-            <button className="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
-            onClick={handleSearch}
+            <button
+              className="bg-indigo-500 text-white rounded-full font-semibold px-8 py-4 hover:bg-indigo-400 focus:bg-indigo-600 focus:outline-none"
+              onClick={handleSearchClick}
+              disabled={!query}
             >
               Search
             </button>

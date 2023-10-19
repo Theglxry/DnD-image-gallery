@@ -1,98 +1,30 @@
-import React from "react";
-// import { signOut } from "firebase/auth";
-// import {database} from "../../libs/firebase";
-// import { useNavigate } from "react-router-dom";
-import GalleryComp from "../../components/gallery/galleryComp";
-import SearchBar from "../../components/gallery/Search";
-
-
-
-
-
-
- 
-
-
-
+import React, { useEffect, useState } from "react";
+import PageLoader from "../../components/PageLoader";
+import UserGallery from "../../components/newGallery/userGallery";
 
 function ImageGallery() {
+  const [isLoading, setIsLoading] = useState(true);
 
-   
+  useEffect(() => {
+    const delay = 1000;
+    const timeoutId = setTimeout(() => {
+      setIsLoading(false);
+    }, delay);
+
+    return () => clearTimeout(timeoutId);
+  }, []);
+
   return (
     <div className="App">
-      <SearchBar onSearch={handleSearch} />
-      <GalleryComp />
+      {isLoading ? (
+        <PageLoader />
+      ) : (
+        <>
+          <UserGallery />
+        </>
+      )}
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // return (
-  //   <div className="flex-col h-screen">
-  //     <div>
-  //       <SearchBar />
-  //     </div>
-
-  //     <div className="w-full pt-24  ">
-  //     {/* imageGallery */}
-  //       <GalleryComp />
-  //     </div>
-  //   </div>
-  // );
-
 
 export default ImageGallery;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-import React, { useState } from 'react';
-
-import SearchBar from './SearchBar'; // Adjust the path as needed
-
-function App() {
-  const [images, setImages] = useState([]);
-
-  const handleSearch = (newImages) => {
-    setImages(newImages);
-  };
-
-  return (
-    <div className="App">
-      <SearchBar onSearch={handleSearch} />
-      <ImageGallery images={images} />
-    </div>
-  );
-}
-
-export default App;
-*/

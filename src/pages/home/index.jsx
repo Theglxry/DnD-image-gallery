@@ -20,12 +20,8 @@ const mainStyle = {
 
   return (
     <main style= {mainStyle} className="bg-gray-100 min-h-screen flex items-center justify-center">
-      {/* <div className="bg-white p-8 rounded-lg shadow-md"> */}
       <div className=" p-8 rounded-lg shadow-md">
-
         <LoginForm />
-      {/* <AuthDetails /> */}
-       
       </div>
     </main>
   )
